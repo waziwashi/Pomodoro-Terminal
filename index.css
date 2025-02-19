@@ -1,0 +1,86 @@
+body {
+    --b: black;
+    font-family: Consolas,monaco,monospace; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.timer-container {
+    --c : white;
+    --d : #2e2e2e;
+    text-align: center;
+    background: var(--d);
+    color: var(--c);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+.x {
+    position: absolute;
+    margin: 9px 0 0 11.6em;
+}
+.title {
+    background-color: var(--b);
+    margin: 0.5em 0 0 0.5em;
+    width: 50%;
+    border-radius: 10px 10px 0 0;
+}
+#timer-title {
+    margin: 0 0.2em;
+    text-align: left;
+    color: var(--c);
+    font-size: 1em;
+}
+.terminal {
+    background-color: var(--b);
+    border-radius: 0 0 10px 10px;
+}
+.time {
+    font-size: 2rem;
+    padding: 20px 0;
+    color: var(--c);
+}
+.progress-container {
+    width: 100%;
+    overflow: hidden;
+    font-family: monospace;
+    text-align: left;
+    padding: 5px;
+    white-space: nowrap;
+}
+.progress-bar {
+    height: 20px;
+    line-height: 20px;
+    color: var(--c);
+    white-space: nowrap;
+}
+p {
+    font-family: monospace;
+    font-size: 1.2em;
+    margin: 0;
+    text-align: left;
+}
+.ligne {
+    display: inline-block;
+    margin: 0 1em 1em 0;
+}
+input[type=number] {
+    font-size: large;
+    font-family: monospace;
+    color: var(--c);
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    width: 50px;
+    border-radius: 5px;
+    -moz-appearance:textfield;
+}
+button {
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+	color: inherit;
+	border: none;
+	cursor: pointer;
+}

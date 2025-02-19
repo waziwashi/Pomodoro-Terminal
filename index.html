@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>🍅</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="timer-container">
+            <p class="x">x</p>
+            <div class="title"><h1 id="timer-title">🍅Pomodoro</h1></div>
+            <div class="terminal">
+                <div class="time" id="display">00:00</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar">[--------------------------------------------------]</div>
+                </div>
+                <div class="ligne">
+                    <p>Pomodori: <span id="sequence-count">0</span></p>
+                    <p>Minutes: <input type="number" id="minutes" min="1"></p>
+                </div>
+                <button onclick="startTimer()">▶️</button>
+                <button onclick="resetTimer()">⏹️</button>
+            </div>
+        </div>
+        <script>
+            let countdown;
+            let totalTime;
+            let isRunning = false;
+            let sequenceCount = 0;
+
+            function startTimer() {
+                clearInterval(countdown);
+                const minutes = document.getElementById("minutes").value;
+                if (!minutes || minutes <= 0) return;
+                isRunning = true;
+                document.getElementById("timer-title").textContent = "🍅Pomodoro";
+                runTimer(minutes * 60, () => runPauseTimer(300)); //⏸️Pause en secondes
+            }
+
+            function runTimer(duration, callback) {
+                totalTime = duration;
+                let timeLeft = totalTime;
+                updateDisplay(timeLeft);
+                updateProgress(timeLeft);
+                countdown = setInterval(() => {
+                    timeLeft--;
+                    updateDisplay(timeLeft);
+                    updateProgress(timeLeft);
+                    if (timeLeft <= 0) {
+                        clearInterval(countdown);
+                        if (callback) callback();
+                    }
+                }, 1000);
+            }
+
+            function runPauseTimer(pauseDuration) {
+                document.getElementById("timer-title").textContent = "⏸️Pause";
+                runTimer(pauseDuration, () => {
+                    isRunning = false;
+                    document.getElementById("timer-title").textContent = "🍅Pomodoro";
+                    sequenceCount++;
+                    document.getElementById("sequence-count").textContent = sequenceCount;
+                });
+            }
+
+            function resetTimer() {
+                clearInterval(countdown);
+                isRunning = false;
+                document.getElementById("display").textContent = "00:00";
+                document.getElementById("progress-bar").textContent = "[--------------------------------------------------]";
+                document.getElementById("timer-title").textContent = "🍅Pomodoro";
+                sequenceCount = 0;
+                document.getElementById("sequence-count").textContent = sequenceCount;
+            }
+
+            function updateDisplay(seconds) {
+                const min = Math.floor(seconds / 60);
+                const sec = seconds % 60;
+                document.getElementById("display").textContent = 
+                    `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+            }
+
+            function updateProgress(timeLeft) {
+                const progress = Math.round(((totalTime - timeLeft) / totalTime) * 50);
+                const bar = "#".repeat(progress) + "-".repeat(50 - progress);
+                document.getElementById("progress-bar").textContent = `[${bar}]`;
+            }
+        </script>
+    </body>
+</html>
