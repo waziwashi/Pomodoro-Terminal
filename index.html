@@ -6,7 +6,8 @@
     </head>
     <body>
         <div class="timer-container">
-            <p class="x">x</p>
+            <p class="x">×</p>
+            <p class="-□×">- □ ×</p>
             <div class="title"><h1 id="timer-title">🍅Pomodoro</h1></div>
             <div class="terminal">
                 <div class="time" id="display">00:00</div>
@@ -19,6 +20,7 @@
                 </div>
                 <button onclick="startTimer()">▶️</button>
                 <button onclick="resetTimer()">⏹️</button>
+                <audio id="alarm-sound" src="oiseaux.wav"></audio>
             </div>
         </div>
         <script>
@@ -33,7 +35,7 @@
                 if (!minutes || minutes <= 0) return;
                 isRunning = true;
                 document.getElementById("timer-title").textContent = "🍅Pomodoro";
-                runTimer(minutes * 60, () => runPauseTimer(300)); //⏸️Pause en secondes
+                runTimer(minutes * 60, () => runPauseTimer(300)); //Pause en Secondes
             }
 
             function runTimer(duration, callback) {
@@ -47,6 +49,7 @@
                     updateProgress(timeLeft);
                     if (timeLeft <= 0) {
                         clearInterval(countdown);
+                        playSound();
                         if (callback) callback();
                     }
                 }, 1000);
@@ -83,6 +86,10 @@
                 const progress = Math.round(((totalTime - timeLeft) / totalTime) * 50);
                 const bar = "#".repeat(progress) + "-".repeat(50 - progress);
                 document.getElementById("progress-bar").textContent = `[${bar}]`;
+            }
+
+            function playSound() {
+                document.getElementById("alarm-sound").play();
             }
         </script>
     </body>

@@ -17,11 +17,15 @@ body {
 }
 .x {
     position: absolute;
-    margin: 9px 0 0 11.6em;
+    margin: 7px 0 0 11.6em;
+}
+.-□× {
+    position: absolute;
+    margin: 5px 0 0 21em;
 }
 .title {
     background-color: var(--b);
-    margin: 0.5em 0 0 0.5em;
+    margin: 0.3em 0 0 0.3em;
     width: 50%;
     border-radius: 10px 10px 0 0;
 }
