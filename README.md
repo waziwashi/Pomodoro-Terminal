@@ -4,4 +4,4 @@ Elle peut être ajoutée sur une scène OBS pour servir en stream.<br>
   2. Appuyer sur ▶️ pour lancer le Pomodori<br>
 → bon travail !👌
 
-![image](https://github.com/user-attachments/assets/2498dfae-4969-4bd0-a931-d2b8c161549e)
+![Screenshot 2025-02-20 18-02-47](https://github.com/user-attachments/assets/2fefbe0d-930e-48a6-8b4a-d1d0707ca0ff)
